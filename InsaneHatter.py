@@ -18,6 +18,7 @@ try:
     import aiohttp
     import validators
     import io
+    import PyNaCl
     import tempfile
     import openai
     import pytube
@@ -66,6 +67,7 @@ except ImportError:
     os.system("pip install urllib")
     os.system("pip install pytube")
     os.system("pip install typing")
+    os.system("pip install PyNaCl")
     
     import discord
     import ssl
@@ -88,6 +90,7 @@ except ImportError:
     import openai
     import pytube
     import logging
+    import PyNaCl
     from discord import app_commands, Color, Embed, HTTPException
     from discord.ext import commands, tasks
     from discord import ButtonStyle, SelectOption, ui
