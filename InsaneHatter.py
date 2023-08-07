@@ -1,49 +1,107 @@
-import discord
 import os
-import ssl
-import base64
-import json
-import uuid
-import colorama
-import asyncio
-import random
-import string
-import ctypes
-import datetime
-import time
-import json
-import re
-import aiohttp
-import validators
-import io
-import tempfile
-import openai
-import pytube
-import logging
-from discord import app_commands, Color, Embed, HTTPException
-from discord.ext import commands, tasks
-from discord import ButtonStyle, SelectOption, ui
-from colorama import Fore
-from datetime import datetime
-from itertools import cycle
-from asyncio import sleep
-from bs4 import BeautifulSoup
-from gtts import gTTS
-from urllib.parse import urlencode
-from discord import Embed, Color
-from pytube import Playlist
-from typing import List, Union
-
-failed_imports = []
 
 try:
-    import requests
+    import discord
+    import ssl
+    import base64
+    import json
+    import uuid
+    import colorama
+    import asyncio
+    import random
+    import string
+    import ctypes
+    import datetime
+    import time
+    import json
+    import re
+    import aiohttp
+    import validators
+    import io
+    import tempfile
+    import openai
+    import pytube
+    import logging
+    from discord import app_commands, Color, Embed, HTTPException
+    from discord.ext import commands, tasks
+    from discord import ButtonStyle, SelectOption, ui
+    from colorama import Fore
+    from datetime import datetime
+    from itertools import cycle
+    from asyncio import sleep
+    from bs4 import BeautifulSoup
+    from gtts import gTTS
+    from urllib.parse import urlencode
+    from discord import Embed, Color
+    from pytube import Playlist
+    from typing import List, Union
 except ImportError:
-    failed_imports.append("requests")
+    os.system("pip install discord")
+    os.system("pip install ssl")
+    os.system("pip install base64")
+    os.system("pip install json")
+    os.system("pip install uuid")
+    os.system("pip install colorama")
+    os.system("pip install asyncio")
+    os.system("pip install random")
+    os.system("pip install string")
+    os.system("pip install ctypes")
+    os.system("pip install datetime")
+    os.system("pip install time")
+    os.system("pip install json")
+    os.system("pip install re")
+    os.system("pip install aiohttp")
+    os.system("pip install validators")
+    os.system("pip install io")
+    os.system("pip install tempfile")
+    os.system("pip install openai")
+    os.system("pip install pytube")
+    os.system("pip install logging")
+    os.system("pip install discord.py")
+    os.system("pip install colorama")
+    os.system("pip install datetime")
+    os.system("pip install asyncio")
+    os.system("pip install bs4")
+    os.system("pip install gTTS")
+    os.system("pip install urllib")
+    os.system("pip install pytube")
+    os.system("pip install typing")
+    
+    import discord
+    import ssl
+    import base64
+    import json
+    import uuid
+    import colorama
+    import asyncio
+    import random
+    import string
+    import ctypes
+    import datetime
+    import time
+    import json
+    import re
+    import aiohttp
+    import validators
+    import io
+    import tempfile
+    import openai
+    import pytube
+    import logging
+    from discord import app_commands, Color, Embed, HTTPException
+    from discord.ext import commands, tasks
+    from discord import ButtonStyle, SelectOption, ui
+    from colorama import Fore
+    from datetime import datetime
+    from itertools import cycle
+    from asyncio import sleep
+    from bs4 import BeautifulSoup
+    from gtts import gTTS
+    from urllib.parse import urlencode
+    from discord import Embed, Color
+    from pytube import Playlist
+    from typing import List, Union
 
-if failed_imports:
-    for module in failed_imports:
-        os.system(f"pip install {module}")
 
 
 
