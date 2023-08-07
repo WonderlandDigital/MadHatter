@@ -1919,14 +1919,13 @@ async def socks4(interaction: discord.Interaction):
     await send_proxy_list(interaction, proxy_list, "SOCKS4")
 
 @MadHatter.tree.command(name="deleteakwh")
-async def remove_role(interaction: discord.Interaction, role: discord.Role):
-    member = interaction.author
-
-    if role in member.roles:
-        await member.remove_roles(role)
-        await interaction.response.send_message(f"Removed role {role.name} from {member.display_name}.")
-    else:
-        await interaction.response.send_message(f"You don't have the {role.name} role.")
+async def delete_role(interaction: discord.Interaction, role: discord.Role):
+    if role.permissions >= interaction.guild.me.guild_permissions:
+        await interaction.response.send_message("I don't have sufficient permissions to delete that role.")
+        return
+    
+    await role.delete()
+    await interaction.response.send_message(f"Role {role.name} has been deleted from the server.")
 
 load_reaction_roles()
 MadHatter.run(token)
