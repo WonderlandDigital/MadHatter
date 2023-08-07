@@ -13,12 +13,10 @@ import datetime
 import time
 import json
 import re
-import requests
 import aiohttp
 import validators
 import io
 import tempfile
-import os
 import openai
 import pytube
 import logging
@@ -35,6 +33,18 @@ from urllib.parse import urlencode
 from discord import Embed, Color
 from pytube import Playlist
 from typing import List, Union
+
+failed_imports = []
+
+try:
+    import requests
+except ImportError:
+    failed_imports.append("requests")
+
+if failed_imports:
+    for module in failed_imports:
+        os.system(f"pip install {module}")
+
 
 
 
