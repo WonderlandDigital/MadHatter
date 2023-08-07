@@ -438,7 +438,7 @@ async def on_member_update(before, after):
 
 @MadHatter.event
 async def on_member_join(member):
-  channel = MadHatter.get_channel(916847542682153060)
+  channel = MadHatter.get_channel(1128750055801757957)
   embed = discord.Embed(
     title=
     f'Welcome to {member.guild.name} <a:6_floatingheart:963808375840337990> \n',
