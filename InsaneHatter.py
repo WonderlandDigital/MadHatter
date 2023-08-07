@@ -66,7 +66,6 @@ except ImportError:
     os.system("pip install urllib")
     os.system("pip install pytube")
     os.system("pip install typing")
-    os.system("pip install PyNaCl")
     
     import discord
     import ssl
