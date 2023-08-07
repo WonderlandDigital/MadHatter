@@ -200,12 +200,13 @@ def fetch_proxies(url):
 
 async def send_proxy_list(interaction, proxy_list, proxy_type):
     filename = f"Wonderland-{proxy_type}.txt"
-    with open(filename, "w") as file:
-        file.write(proxy_list)
-    
-    renamed_filename = f"Wonderland-{proxy_type}.txt"
     
     try:
+        with open(filename, "w") as file:
+            file.write(proxy_list)
+        
+        renamed_filename = f"Wonderland-{proxy_type}.txt"
+        
         with open(filename, "rb") as file:
             await interaction.response.send_message(
                 file=discord.File(file, renamed_filename)
