@@ -1918,6 +1918,44 @@ async def socks4(interaction: discord.Interaction):
     proxy_list = fetch_proxies("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all")
     await send_proxy_list(interaction, proxy_list, "SOCKS4")
 
+@MadHatter.tree.command()
+async def remove_role(interaction: discord.Interaction):
+    guild = interaction.guild
+    member = interaction.author
+
+    role_list = [role.name for role in member.roles if role.name != "@everyone"]
+
+    if not role_list:
+        await interaction.response.send_message("You don't have any roles to remove.")
+        return
+
+    role_options = []
+    for role in role_list:
+        role_options.append(discord.SelectOption(label=role, value=role))
+
+    select = discord.ui.Select(placeholder="Select a role to remove", options=role_options)
+    view = discord.ui.View()
+    view.add_item(select)
+
+    await interaction.response.send_message("Select a role to remove:", view=view)
+
+    def check(res):
+        return (
+            res.user == member
+            and res.component.custom_id == select.custom_id
+            and res.component.values[0] in role_list
+        )
+
+    try:
+        res = await bot.wait_for("select_option", timeout=60.0, check=check)
+    except asyncio.TimeoutError:
+        await interaction.followup.send("Role selection timed out.")
+        return
+
+    selected_role_name = res.component.values[0]
+    selected_role = discord.utils.get(guild.roles, name=selected_role_name)
+    await member.remove_roles(selected_role)
+    await interaction.followup.send(f"Removed role {selected_role.name} from {member.display_name}")
 
 load_reaction_roles()
 MadHatter.run(token)
