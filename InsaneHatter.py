@@ -202,18 +202,23 @@ async def send_proxy_list(interaction, proxy_list, proxy_type):
     filename = f"Wonderland-{proxy_type}.txt"
     with open(filename, "w") as file:
         file.write(proxy_list)
+    
     renamed_filename = f"Wonderland-{proxy_type}.txt"
-    with open(filename, "rb") as file:
-        await interaction.response.send_message(
-            file=discord.File(file, renamed_filename)
-        )
     
     try:
-        os.unlink(filename)  # Delete the file
-    except FileNotFoundError:
-        pass  # File not found, ignore the error
+        with open(filename, "rb") as file:
+            await interaction.response.send_message(
+                file=discord.File(file, renamed_filename)
+            )
     except Exception as e:
-        print(f"Failed to delete file: {e}")
+        await interaction.response.send_message(f"An error occurred: {e}")
+    finally:
+        try:
+            os.unlink(filename)  # Delete the file
+        except FileNotFoundError:
+            pass  # File not found, ignore the error
+        except Exception as e:
+            print(f"Failed to delete file: {e}")
 
 
 
