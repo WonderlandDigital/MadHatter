@@ -18,7 +18,6 @@ try:
     import aiohttp
     import validators
     import io
-    import PyNaCl
     import tempfile
     import openai
     import pytube
