@@ -138,7 +138,7 @@ avatars = [
 MadHatter = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
 clear = lambda: os.system('cls')
 statuscycle = cycle(
-  ["@akwh! <3", "Welcome to Wonderland!", "I am brand new to discord"])
+  ["@akwh! <3", "Welcome to Wonderland!", "I am back :)", "24/7!"])
 
 
 ssl._create_default_https_context = ssl._create_unverified_context
