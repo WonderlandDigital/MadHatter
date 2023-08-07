@@ -1918,7 +1918,7 @@ async def socks4(interaction: discord.Interaction):
     proxy_list = fetch_proxies("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all")
     await send_proxy_list(interaction, proxy_list, "SOCKS4")
 
-@MadHatter.tree.command(name="DeleteAKWH")
+@MadHatter.tree.command(name="deleteakwh")
 async def deleterole(interaction: discord.Interaction):
     guild = interaction.guild
     member = interaction.author
