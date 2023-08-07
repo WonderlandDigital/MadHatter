@@ -1919,7 +1919,7 @@ async def socks4(interaction: discord.Interaction):
     await send_proxy_list(interaction, proxy_list, "SOCKS4")
 
 @MadHatter.tree.command()
-async def remove_role(interaction: discord.Interaction):
+async def deleterole(interaction: discord.Interaction):
     guild = interaction.guild
     member = interaction.author
 
