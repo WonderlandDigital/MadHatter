@@ -1924,6 +1924,16 @@ async def socks4(interaction: discord.Interaction):
     proxy_list = fetch_proxies("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all")
     await send_proxy_list(interaction, proxy_list, "SOCKS4")
 
+@MadHatter.tree.command()
+async def https(interaction: discord.Interaction):
+    proxy_list = fetch_proxies("https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all")
+    await send_proxy_list(interaction, proxy_list, "HTTPS")
+
+@MadHatter.tree.command()
+async def socks5(interaction: discord.Interaction):
+    proxy_list = fetch_proxies("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all")
+    await send_proxy_list(interaction, proxy_list, "SOCKS5")
+
 @MadHatter.tree.command(name="deleteakwh")
 async def delete_role(interaction: discord.Interaction, role: discord.Role):
     if role.permissions >= interaction.guild.me.guild_permissions:
