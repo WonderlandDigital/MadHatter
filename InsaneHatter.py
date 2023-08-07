@@ -89,7 +89,6 @@ except ImportError:
     import openai
     import pytube
     import logging
-    import PyNaCl
     from discord import app_commands, Color, Embed, HTTPException
     from discord.ext import commands, tasks
     from discord import ButtonStyle, SelectOption, ui
