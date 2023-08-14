@@ -347,7 +347,7 @@ async def on_ready():
     try:
         synced = await MadHatter.tree.sync()
         print(
-            f"{Fore.GREEN}                                  Synced{Fore.WHITE} {len(synced)} command(s)"
+            f"{Fore.GREEN}                                  		Synced{Fore.WHITE} {len(synced)} command(s)"
         )
     except Exception as e:
         print(e)
