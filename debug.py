@@ -1016,7 +1016,7 @@ async def purge(interaction: discord.Interaction, amount: str):
   deleted = await interaction.channel.purge(limit=int(amount) + 1)
   actual_deleted = len(deleted) - 1
   msg = await interaction.channel.send(f"Purged {actual_deleted} messages.")
-  await asyncio.sleep(0.2)
+  await asyncio.sleep(1)
 
 @MadHatter.tree.command(name="nuke",
                         description="A command to nuke a text channel.")
