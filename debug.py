@@ -461,17 +461,45 @@ snipe_message_content = None
 snipe_message_author = None
 
 @MadHatter.event
-async def on_message_delete(message):  #Checking if any messages get deleted.
-  channelaudit = MadHatter.get_channel(1094688186493566986)
-  embed = discord.Embed(
-    title=f"{message.author}'s Message was deleted.",
-    description=
-    f"Deleted Message: {message.content}\nAuthor: {message.author.mention}\nLocation: {message.channel.mention}",
-    timestamp=datetime.now(),
-    color=discord.Colour.red())
-  embed.set_author(name=message.author.name,
-                   icon_url=message.author.display_avatar)
-  await channelaudit.send(embed=embed)
+async def on_message_delete(message):  # Checking if any messages get deleted.
+    channelaudit = MadHatter.get_channel(1094688186493566986)
+    
+    # Check if the deleted message has any attachments
+    if message.attachments:
+        # Create a list to store image URLs
+        image_urls = []
+        
+        # Iterate through attachments and add their URLs to the list
+        for attachment in message.attachments:
+            image_urls.append(attachment.url)
+        
+        # Create an embed with image URLs
+        embed = discord.Embed(
+            title=f"{message.author}'s Message with Image(s) was deleted.",
+            description=f"Author: {message.author.mention}\nLocation: {message.channel.mention}",
+            timestamp=datetime.now(),
+            color=discord.Colour.red())
+        
+        embed.set_author(name=message.author.name,
+                         icon_url=message.author.display_avatar)
+        
+        # Add image URLs to the embed
+        for url in image_urls:
+            embed.add_field(name="Image Attachment", value=url)
+        
+        await channelaudit.send(embed=embed)
+    else:
+        # If there are no attachments, handle the message deletion without images
+        embed = discord.Embed(
+            title=f"{message.author}'s Message was deleted.",
+            description=f"Deleted Message: {message.content}\nAuthor: {message.author.mention}\nLocation: {message.channel.mention}",
+            timestamp=datetime.now(),
+            color=discord.Colour.red())
+        
+        embed.set_author(name=message.author.name,
+                         icon_url=message.author.display_avatar)
+        
+        await channelaudit.send(embed=embed)
 
 @MadHatter.event
 async def on_message_edit(before, after):
