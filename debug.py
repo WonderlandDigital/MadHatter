@@ -1992,7 +1992,7 @@ async def profile(interaction: discord.Interaction):
 
 @MadHatter.tree.command(name="slow-mode", description="A command to activate slowmode in a channel.")
 async def slowmode(interaction: discord.Interaction, seconds: int):
-    if interaction.author.guild_permissions.manage_channels:
+    if interaction.user.guild_permissions.manage_channels:
         try:
             await interaction.channel.edit(slowmode_delay=seconds)
             await interaction.channel.send(f"Slow mode set to {seconds} seconds in this channel.")
