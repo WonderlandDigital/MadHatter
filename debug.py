@@ -1995,11 +1995,11 @@ async def slowmode(interaction: discord.Interaction, seconds: int):
     if interaction.user.guild_permissions.manage_channels:
         try:
             await interaction.channel.edit(slowmode_delay=seconds)
-            await interaction.channel.send(f"Slow mode set to {seconds} seconds in this channel.")
+            await interaction.response.send_message(f"Slow mode set to {seconds} seconds in this channel.")
         except discord.Forbidden:
-            await interaction.channel.send("I don't have permission to manage channels.")
+            await interaction.response.send_message("I don't have permission to manage channels.")
     else:
-        await interaction.channel.send("You don't have permission to manage channels.")
+        await interaction.response.send_message("You don't have permission to manage channels.")
 
 
 
