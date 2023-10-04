@@ -420,6 +420,7 @@ async def on_message(message):
     else:
         await MadHatter.process_commands(message)
 
+
 @MadHatter.event
 async def on_role_create(role):
   channel_id = 1094688186493566986  # Channel ID where the embed will be sent
@@ -1988,6 +1989,21 @@ async def profile(interaction: discord.Interaction):
         await interaction.response.send_message(embed=embed)
     else:
         await interaction.response.send_message("You haven't earned any XP yet.")
+
+@MadHatter.tree.command(name="slow-mode", description="A command to activate slowmode in a channel.")
+async def slowmode(interaction: discord.Interaction, seconds: int):
+    if interaction.author.guild_permissions.manage_channels:
+        try:
+            await interaction.channel.edit(slowmode_delay=seconds)
+            await interaction.channel.send(f"Slow mode set to {seconds} seconds in this channel.")
+        except discord.Forbidden:
+            await interaction.channel.send("I don't have permission to manage channels.")
+    else:
+        await interaction.channel.send("You don't have permission to manage channels.")
+
+
+
+
 
 try:
     load_reaction_roles()
