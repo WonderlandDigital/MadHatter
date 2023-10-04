@@ -2002,7 +2002,7 @@ async def slowmode(interaction: discord.Interaction, seconds: int):
         await interaction.response.send_message("You don't have permission to manage channels.")
 
 @MadHatter.tree.command(name="disable-slow-mode", description="A command to disable slowmode in a channel.")
-async def slowmode(interaction: discord.Interaction, seconds: int):
+async def slowmode(interaction: discord.Interaction):
     if interaction.user.guild_permissions.manage_channels:
         try:
             await interaction.channel.edit(slowmode_delay=0)
